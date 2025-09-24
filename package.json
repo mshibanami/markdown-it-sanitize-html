@@ -1,6 +1,6 @@
 {
   "name": "@mshibanami-org/markdown-it-sanitize-html",
-  "version": "1.0.0",
+  "version": "1.0.8",
   "description": "A markdown-it plugin to sanitize HTML using sanitize-html.",
   "publishConfig": {
     "access": "public"
