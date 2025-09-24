@@ -8800,24 +8800,33 @@ and ensure you are accounting for this risk.
 var sanitizeHtmlExports = /* @__PURE__ */ requireSanitizeHtml();
 const sanitizeHtml = /* @__PURE__ */ getDefaultExportFromCjs(sanitizeHtmlExports);
 const markdownItSanitizeHtml = (md, options) => {
-  const purify = (html) => {
-    return sanitizeHtml(html, options);
+  md.inline.ruler.disable("html_inline");
+  const sanitize = (html) => {
+    try {
+      const result2 = sanitizeHtml(html, options);
+      return result2;
+    } catch (error) {
+      return html.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
   };
-  const originalRender = md.render.bind(md);
-  md.render = (src, env) => {
-    const originalHtmlOption = md.options.html;
-    md.options.html = true;
-    const html = originalRender(src, env);
-    md.options.html = originalHtmlOption;
-    return purify(html);
+  const HTML_TAG_REGEX = /<\/?[a-zA-Z][a-zA-Z0-9]*(?:\s[^>]*)?\s*\/?>/;
+  const containsHtmlTags = (text) => {
+    return HTML_TAG_REGEX.test(text);
   };
-  const originalRenderInline = md.renderInline.bind(md);
-  md.renderInline = (src, env) => {
-    const originalHtmlOption = md.options.html;
-    md.options.html = true;
-    const html = originalRenderInline(src, env);
-    md.options.html = originalHtmlOption;
-    return purify(html);
+  const defaultTextRenderer = md.renderer.rules.text || function(tokens, idx) {
+    return tokens[idx].content;
+  };
+  md.renderer.rules.text = (tokens, idx, options2, env, self) => {
+    const token = tokens[idx];
+    const content = token.content;
+    if (containsHtmlTags(content)) {
+      return sanitize(content);
+    }
+    return defaultTextRenderer(tokens, idx, options2, env, self);
+  };
+  md.renderer.rules.html_block = (tokens, idx) => {
+    const token = tokens[idx];
+    return sanitize(token.content);
   };
 };
 export {
