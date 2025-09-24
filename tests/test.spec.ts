@@ -62,4 +62,12 @@ describe('markdown-it-sanitize-html', () => {
     const actualHtml = md.render(unsafeMarkdown);
     expect(actualHtml).toBe(expectedHtml);
   });
+
+  it('should not preserve HTML comments with newlines', () => {
+    const md = markdownIt({ html: true }).use(markdownItSanitizeHtml);
+    const unsafeMarkdown = 'Text before <!-- This is a comment\nwith newlines. --> Text after';
+    const expectedHtml = '<p>Text before  Text after</p>\n';
+    const actualHtml = md.render(unsafeMarkdown);
+    expect(actualHtml).toBe(expectedHtml);
+  });
 });
