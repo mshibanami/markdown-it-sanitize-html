@@ -8804,31 +8804,67 @@ and ensure you are accounting for this risk.
   var sanitizeHtmlExports = /* @__PURE__ */ requireSanitizeHtml();
   const sanitizeHtml = /* @__PURE__ */ getDefaultExportFromCjs(sanitizeHtmlExports);
   const markdownItSanitizeHtml = (md, options) => {
+    md.core.ruler.after("inline", "sanitize_html_text_merger", (state) => {
+      for (const token of state.tokens) {
+        if (token.type === "inline" && token.children) {
+          const newChildren = [];
+          let textBuffer = "";
+          for (const child of token.children) {
+            if (child.type === "text") {
+              textBuffer += child.content;
+            } else if (child.type === "softbreak") {
+              textBuffer += "\n";
+            } else {
+              if (textBuffer) {
+                const t = new state.Token("text", "", 0);
+                t.content = textBuffer;
+                newChildren.push(t);
+                textBuffer = "";
+              }
+              newChildren.push(child);
+            }
+          }
+          if (textBuffer) {
+            const t = new state.Token("text", "", 0);
+            t.content = textBuffer;
+            newChildren.push(t);
+          }
+          token.children = newChildren;
+        }
+      }
+      return true;
+    });
     md.inline.ruler.disable("html_inline");
     const sanitize = (html) => {
-      try {
-        const result2 = sanitizeHtml(html, options);
-        return result2;
-      } catch (error) {
-        return html.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-      }
+      return sanitizeHtml(html, options);
     };
-    const HTML_TAG_REGEX = /<\/?[a-zA-Z][a-zA-Z0-9]*(?:\s[^>]*)?\s*\/?>/;
+    const HTML_PATTERNS = [
+      // Comments
+      /<!--[\s\S]*?-->/g,
+      // Tags
+      /<\/?[a-zA-Z][\w:-]*(?:\s[^>]*)?\s*\/?>/g,
+      // Entities (e.g., &amp;, &#123;, &#x1F600;)
+      /&(?:[a-zA-Z][a-zA-Z0-9]*|#(?:\d+|x[0-9a-fA-F]+));/g
+    ];
     const containsHtmlTags = (text) => {
-      return HTML_TAG_REGEX.test(text);
+      return HTML_PATTERNS.some((pattern) => pattern.test(text));
     };
-    const defaultTextRenderer = md.renderer.rules.text || function(tokens, idx) {
-      return tokens[idx].content;
-    };
-    md.renderer.rules.text = (tokens, idx, options2, env, self2) => {
+    const originalTextRenderer = md.renderer.rules.text || ((tokens, idx, options2, env, self2) => {
+      return self2.renderToken(tokens, idx, options2);
+    });
+    md.renderer.rules.text = (tokens, idx, opts, env, self2) => {
       const token = tokens[idx];
       const content = token.content;
-      if (containsHtmlTags(content)) {
-        return sanitize(content);
+      if (!containsHtmlTags(content)) {
+        return originalTextRenderer(tokens, idx, opts, env, self2);
       }
-      return defaultTextRenderer(tokens, idx, options2, env, self2);
+      return sanitize(content);
     };
     md.renderer.rules.html_block = (tokens, idx) => {
+      const token = tokens[idx];
+      return sanitize(token.content);
+    };
+    md.renderer.rules.html_inline = (tokens, idx) => {
       const token = tokens[idx];
       return sanitize(token.content);
     };
