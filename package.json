@@ -52,6 +52,7 @@
     "@types/sanitize-html": "^2.16.0",
     "@vitest/ui": "^3.2.4",
     "jsdom": "^27.0.0",
+    "markdown-it-task-checkbox": "1.0.6",
     "typescript": "^5.9.2",
     "vite": "^7.1.7",
     "vite-plugin-dts": "^4.5.4",
