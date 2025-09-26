@@ -70,4 +70,14 @@ describe('markdown-it-sanitize-html', () => {
     const actualHtml = md.render(unsafeMarkdown);
     expect(actualHtml).toBe(expectedHtml);
   });
+
+  it('should preserve <br> tag added by markdown-it', () => {
+    const md = markdownIt({ breaks: true, html: true })
+      .use(markdownItSanitizeHtml);
+
+    const unsafeMarkdown = `Line 1\nLine 2`;
+    const expectedHtml = '<p>Line 1<br>\nLine 2</p>\n';
+    const actualHtml = md.render(unsafeMarkdown);
+    expect(actualHtml).toBe(expectedHtml);
+  });
 });
