@@ -8807,26 +8807,25 @@ and ensure you are accounting for this risk.
         if (token.type === "inline" && token.children) {
           const newChildren = [];
           let textBuffer = "";
+          const flushTextBuffer = () => {
+            if (textBuffer) {
+              const t = new state.Token("text", "", 0);
+              t.content = textBuffer;
+              newChildren.push(t);
+              textBuffer = "";
+            }
+          };
           for (const child of token.children) {
             if (child.type === "text") {
               textBuffer += child.content;
-            } else if (child.type === "softbreak") {
+            } else if (child.type === "softbreak" && !md.options.breaks) {
               textBuffer += "\n";
             } else {
-              if (textBuffer) {
-                const t = new state.Token("text", "", 0);
-                t.content = textBuffer;
-                newChildren.push(t);
-                textBuffer = "";
-              }
+              flushTextBuffer();
               newChildren.push(child);
             }
           }
-          if (textBuffer) {
-            const t = new state.Token("text", "", 0);
-            t.content = textBuffer;
-            newChildren.push(t);
-          }
+          flushTextBuffer();
           token.children = newChildren;
         }
       }
