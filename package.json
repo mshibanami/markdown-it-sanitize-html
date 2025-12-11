@@ -7,6 +7,9 @@
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
+  "repository": {
+    "url": "https://github.com/mshibanami/markdown-it-sanitize-html.git"
+  },
   "scripts": {
     "build": "vite build",
     "clean": "rm -rf dist",
