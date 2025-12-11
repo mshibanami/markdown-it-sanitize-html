@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@types/markdown-it": "^14.1.2",
-    "@types/node": "^24.5.2",
+    "@types/node": "^25.0.0",
     "@types/sanitize-html": "^2.16.0",
     "@vitest/ui": "^3.2.4",
     "jsdom": "^27.0.0",
