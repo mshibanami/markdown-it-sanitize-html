@@ -1,6 +1,6 @@
 # markdown-it-sanitize-html
 
-[![Build and Test](https://github.com/mshibanami/markdown-it-sanitize-html/actions/workflows/build_test.yml/badge.svg)](https://github.com/mshibanami/markdown-it-sanitize-html/actions/workflows/build_test.yml) [![npm version](https://badge.fury.io/js/%40mshibanami-org%2Fmarkdown-it-sanitize-html.svg)](https://badge.fury.io/js/%40mshibanami-org%2Fmarkdown-it-sanitize-html) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Test](https://github.com/mshibanami/markdown-it-sanitize-html/actions/workflows/test.yml/badge.svg)](https://github.com/mshibanami/markdown-it-sanitize-html/actions/workflows/test.yml) [![npm version](https://badge.fury.io/js/%40mshibanami-org%2Fmarkdown-it-sanitize-html.svg)](https://badge.fury.io/js/%40mshibanami-org%2Fmarkdown-it-sanitize-html) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A markdown-it plugin to sanitize HTML using [sanitize-html](https://github.com/apostrophecms/sanitize-html).
 
