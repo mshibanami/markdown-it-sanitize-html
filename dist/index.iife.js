@@ -69,10 +69,10 @@ var MarkdownItSanitizeHtml = (function() {
   function requireDecode_codepoint() {
     if (hasRequiredDecode_codepoint) return decode_codepoint;
     hasRequiredDecode_codepoint = 1;
-    (function(exports) {
+    (function(exports$1) {
       var _a;
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.replaceCodePoint = exports.fromCodePoint = void 0;
+      Object.defineProperty(exports$1, "__esModule", { value: true });
+      exports$1.replaceCodePoint = exports$1.fromCodePoint = void 0;
       var decodeMap = /* @__PURE__ */ new Map([
         [0, 65533],
         // C1 Unicode control character reference replacements
@@ -104,7 +104,7 @@ var MarkdownItSanitizeHtml = (function() {
         [158, 382],
         [159, 376]
       ]);
-      exports.fromCodePoint = // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, node/no-unsupported-features/es-builtins
+      exports$1.fromCodePoint = // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, node/no-unsupported-features/es-builtins
       (_a = String.fromCodePoint) !== null && _a !== void 0 ? _a : function(codePoint) {
         var output = "";
         if (codePoint > 65535) {
@@ -122,11 +122,11 @@ var MarkdownItSanitizeHtml = (function() {
         }
         return (_a2 = decodeMap.get(codePoint)) !== null && _a2 !== void 0 ? _a2 : codePoint;
       }
-      exports.replaceCodePoint = replaceCodePoint;
+      exports$1.replaceCodePoint = replaceCodePoint;
       function decodeCodePoint(codePoint) {
-        return (0, exports.fromCodePoint)(replaceCodePoint(codePoint));
+        return (0, exports$1.fromCodePoint)(replaceCodePoint(codePoint));
       }
-      exports.default = decodeCodePoint;
+      exports$1.default = decodeCodePoint;
     })(decode_codepoint);
     return decode_codepoint;
   }
@@ -134,7 +134,7 @@ var MarkdownItSanitizeHtml = (function() {
   function requireDecode() {
     if (hasRequiredDecode) return decode;
     hasRequiredDecode = 1;
-    (function(exports) {
+    (function(exports$1) {
       var __createBinding = decode && decode.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -165,19 +165,19 @@ var MarkdownItSanitizeHtml = (function() {
       var __importDefault = decode && decode.__importDefault || function(mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.decodeXML = exports.decodeHTMLStrict = exports.decodeHTMLAttribute = exports.decodeHTML = exports.determineBranch = exports.EntityDecoder = exports.DecodingMode = exports.BinTrieFlags = exports.fromCodePoint = exports.replaceCodePoint = exports.decodeCodePoint = exports.xmlDecodeTree = exports.htmlDecodeTree = void 0;
+      Object.defineProperty(exports$1, "__esModule", { value: true });
+      exports$1.decodeXML = exports$1.decodeHTMLStrict = exports$1.decodeHTMLAttribute = exports$1.decodeHTML = exports$1.determineBranch = exports$1.EntityDecoder = exports$1.DecodingMode = exports$1.BinTrieFlags = exports$1.fromCodePoint = exports$1.replaceCodePoint = exports$1.decodeCodePoint = exports$1.xmlDecodeTree = exports$1.htmlDecodeTree = void 0;
       var decode_data_html_js_1 = __importDefault(/* @__PURE__ */ requireDecodeDataHtml());
-      exports.htmlDecodeTree = decode_data_html_js_1.default;
+      exports$1.htmlDecodeTree = decode_data_html_js_1.default;
       var decode_data_xml_js_1 = __importDefault(/* @__PURE__ */ requireDecodeDataXml());
-      exports.xmlDecodeTree = decode_data_xml_js_1.default;
+      exports$1.xmlDecodeTree = decode_data_xml_js_1.default;
       var decode_codepoint_js_1 = __importStar(/* @__PURE__ */ requireDecode_codepoint());
-      exports.decodeCodePoint = decode_codepoint_js_1.default;
+      exports$1.decodeCodePoint = decode_codepoint_js_1.default;
       var decode_codepoint_js_2 = /* @__PURE__ */ requireDecode_codepoint();
-      Object.defineProperty(exports, "replaceCodePoint", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "replaceCodePoint", { enumerable: true, get: function() {
         return decode_codepoint_js_2.replaceCodePoint;
       } });
-      Object.defineProperty(exports, "fromCodePoint", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "fromCodePoint", { enumerable: true, get: function() {
         return decode_codepoint_js_2.fromCodePoint;
       } });
       var CharCodes;
@@ -201,7 +201,7 @@ var MarkdownItSanitizeHtml = (function() {
         BinTrieFlags2[BinTrieFlags2["VALUE_LENGTH"] = 49152] = "VALUE_LENGTH";
         BinTrieFlags2[BinTrieFlags2["BRANCH_LENGTH"] = 16256] = "BRANCH_LENGTH";
         BinTrieFlags2[BinTrieFlags2["JUMP_TABLE"] = 127] = "JUMP_TABLE";
-      })(BinTrieFlags = exports.BinTrieFlags || (exports.BinTrieFlags = {}));
+      })(BinTrieFlags = exports$1.BinTrieFlags || (exports$1.BinTrieFlags = {}));
       function isNumber(code) {
         return code >= CharCodes.ZERO && code <= CharCodes.NINE;
       }
@@ -227,7 +227,7 @@ var MarkdownItSanitizeHtml = (function() {
         DecodingMode2[DecodingMode2["Legacy"] = 0] = "Legacy";
         DecodingMode2[DecodingMode2["Strict"] = 1] = "Strict";
         DecodingMode2[DecodingMode2["Attribute"] = 2] = "Attribute";
-      })(DecodingMode = exports.DecodingMode || (exports.DecodingMode = {}));
+      })(DecodingMode = exports$1.DecodingMode || (exports$1.DecodingMode = {}));
       var EntityDecoder = (
         /** @class */
         (function() {
@@ -411,7 +411,7 @@ var MarkdownItSanitizeHtml = (function() {
           return EntityDecoder2;
         })()
       );
-      exports.EntityDecoder = EntityDecoder;
+      exports$1.EntityDecoder = EntityDecoder;
       function getDecoder(decodeTree) {
         var ret = "";
         var decoder = new EntityDecoder(decodeTree, function(str) {
@@ -465,7 +465,7 @@ var MarkdownItSanitizeHtml = (function() {
         }
         return -1;
       }
-      exports.determineBranch = determineBranch;
+      exports$1.determineBranch = determineBranch;
       var htmlDecoder = getDecoder(decode_data_html_js_1.default);
       var xmlDecoder = getDecoder(decode_data_xml_js_1.default);
       function decodeHTML(str, mode) {
@@ -474,19 +474,19 @@ var MarkdownItSanitizeHtml = (function() {
         }
         return htmlDecoder(str, mode);
       }
-      exports.decodeHTML = decodeHTML;
+      exports$1.decodeHTML = decodeHTML;
       function decodeHTMLAttribute(str) {
         return htmlDecoder(str, DecodingMode.Attribute);
       }
-      exports.decodeHTMLAttribute = decodeHTMLAttribute;
+      exports$1.decodeHTMLAttribute = decodeHTMLAttribute;
       function decodeHTMLStrict(str) {
         return htmlDecoder(str, DecodingMode.Strict);
       }
-      exports.decodeHTMLStrict = decodeHTMLStrict;
+      exports$1.decodeHTMLStrict = decodeHTMLStrict;
       function decodeXML(str) {
         return xmlDecoder(str, DecodingMode.Strict);
       }
-      exports.decodeXML = decodeXML;
+      exports$1.decodeXML = decodeXML;
     })(decode);
     return decode;
   }
@@ -494,9 +494,9 @@ var MarkdownItSanitizeHtml = (function() {
   function requireTokenizer() {
     if (hasRequiredTokenizer) return Tokenizer;
     hasRequiredTokenizer = 1;
-    (function(exports) {
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.QuoteType = void 0;
+    (function(exports$1) {
+      Object.defineProperty(exports$1, "__esModule", { value: true });
+      exports$1.QuoteType = void 0;
       var decode_js_1 = /* @__PURE__ */ requireDecode();
       var CharCodes;
       (function(CharCodes2) {
@@ -581,7 +581,7 @@ var MarkdownItSanitizeHtml = (function() {
         QuoteType2[QuoteType2["Unquoted"] = 1] = "Unquoted";
         QuoteType2[QuoteType2["Single"] = 2] = "Single";
         QuoteType2[QuoteType2["Double"] = 3] = "Double";
-      })(QuoteType = exports.QuoteType || (exports.QuoteType = {}));
+      })(QuoteType = exports$1.QuoteType || (exports$1.QuoteType = {}));
       var Sequences = {
         Cdata: new Uint8Array([67, 68, 65, 84, 65, 91]),
         CdataEnd: new Uint8Array([93, 93, 62]),
@@ -1260,7 +1260,7 @@ var MarkdownItSanitizeHtml = (function() {
           return Tokenizer3;
         })()
       );
-      exports.default = Tokenizer2;
+      exports$1.default = Tokenizer2;
     })(Tokenizer);
     return Tokenizer;
   }
@@ -1701,9 +1701,9 @@ var MarkdownItSanitizeHtml = (function() {
   function requireLib$5() {
     if (hasRequiredLib$5) return lib$3;
     hasRequiredLib$5 = 1;
-    (function(exports) {
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.Doctype = exports.CDATA = exports.Tag = exports.Style = exports.Script = exports.Comment = exports.Directive = exports.Text = exports.Root = exports.isTag = exports.ElementType = void 0;
+    (function(exports$1) {
+      Object.defineProperty(exports$1, "__esModule", { value: true });
+      exports$1.Doctype = exports$1.CDATA = exports$1.Tag = exports$1.Style = exports$1.Script = exports$1.Comment = exports$1.Directive = exports$1.Text = exports$1.Root = exports$1.isTag = exports$1.ElementType = void 0;
       var ElementType;
       (function(ElementType2) {
         ElementType2["Root"] = "root";
@@ -1715,20 +1715,20 @@ var MarkdownItSanitizeHtml = (function() {
         ElementType2["Tag"] = "tag";
         ElementType2["CDATA"] = "cdata";
         ElementType2["Doctype"] = "doctype";
-      })(ElementType = exports.ElementType || (exports.ElementType = {}));
+      })(ElementType = exports$1.ElementType || (exports$1.ElementType = {}));
       function isTag(elem) {
         return elem.type === ElementType.Tag || elem.type === ElementType.Script || elem.type === ElementType.Style;
       }
-      exports.isTag = isTag;
-      exports.Root = ElementType.Root;
-      exports.Text = ElementType.Text;
-      exports.Directive = ElementType.Directive;
-      exports.Comment = ElementType.Comment;
-      exports.Script = ElementType.Script;
-      exports.Style = ElementType.Style;
-      exports.Tag = ElementType.Tag;
-      exports.CDATA = ElementType.CDATA;
-      exports.Doctype = ElementType.Doctype;
+      exports$1.isTag = isTag;
+      exports$1.Root = ElementType.Root;
+      exports$1.Text = ElementType.Text;
+      exports$1.Directive = ElementType.Directive;
+      exports$1.Comment = ElementType.Comment;
+      exports$1.Script = ElementType.Script;
+      exports$1.Style = ElementType.Style;
+      exports$1.Tag = ElementType.Tag;
+      exports$1.CDATA = ElementType.CDATA;
+      exports$1.Doctype = ElementType.Doctype;
     })(lib$3);
     return lib$3;
   }
@@ -2170,7 +2170,7 @@ var MarkdownItSanitizeHtml = (function() {
   function requireLib$4() {
     if (hasRequiredLib$4) return lib$4;
     hasRequiredLib$4 = 1;
-    (function(exports) {
+    (function(exports$1) {
       var __createBinding = lib$4 && lib$4.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -2184,14 +2184,14 @@ var MarkdownItSanitizeHtml = (function() {
         if (k2 === void 0) k2 = k;
         o[k2] = m[k];
       }));
-      var __exportStar = lib$4 && lib$4.__exportStar || function(m, exports2) {
-        for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p)) __createBinding(exports2, m, p);
+      var __exportStar = lib$4 && lib$4.__exportStar || function(m, exports$12) {
+        for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports$12, p)) __createBinding(exports$12, m, p);
       };
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.DomHandler = void 0;
+      Object.defineProperty(exports$1, "__esModule", { value: true });
+      exports$1.DomHandler = void 0;
       var domelementtype_1 = /* @__PURE__ */ requireLib$5();
       var node_js_1 = /* @__PURE__ */ requireNode$1();
-      __exportStar(/* @__PURE__ */ requireNode$1(), exports);
+      __exportStar(/* @__PURE__ */ requireNode$1(), exports$1);
       var defaultOpts = {
         withStartIndices: false,
         withEndIndices: false,
@@ -2321,8 +2321,8 @@ var MarkdownItSanitizeHtml = (function() {
           return DomHandler2;
         })()
       );
-      exports.DomHandler = DomHandler;
-      exports.default = DomHandler;
+      exports$1.DomHandler = DomHandler;
+      exports$1.default = DomHandler;
     })(lib$4);
     return lib$4;
   }
@@ -2351,10 +2351,10 @@ var MarkdownItSanitizeHtml = (function() {
   function require_escape() {
     if (hasRequired_escape) return _escape;
     hasRequired_escape = 1;
-    (function(exports) {
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.escapeText = exports.escapeAttribute = exports.escapeUTF8 = exports.escape = exports.encodeXML = exports.getCodePoint = exports.xmlReplacer = void 0;
-      exports.xmlReplacer = /["&'<>$\x80-\uFFFF]/g;
+    (function(exports$1) {
+      Object.defineProperty(exports$1, "__esModule", { value: true });
+      exports$1.escapeText = exports$1.escapeAttribute = exports$1.escapeUTF8 = exports$1.escape = exports$1.encodeXML = exports$1.getCodePoint = exports$1.xmlReplacer = void 0;
+      exports$1.xmlReplacer = /["&'<>$\x80-\uFFFF]/g;
       var xmlCodeMap = /* @__PURE__ */ new Map([
         [34, "&quot;"],
         [38, "&amp;"],
@@ -2362,7 +2362,7 @@ var MarkdownItSanitizeHtml = (function() {
         [60, "&lt;"],
         [62, "&gt;"]
       ]);
-      exports.getCodePoint = // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      exports$1.getCodePoint = // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       String.prototype.codePointAt != null ? function(str, index) {
         return str.codePointAt(index);
       } : (
@@ -2375,7 +2375,7 @@ var MarkdownItSanitizeHtml = (function() {
         var ret = "";
         var lastIdx = 0;
         var match;
-        while ((match = exports.xmlReplacer.exec(str)) !== null) {
+        while ((match = exports$1.xmlReplacer.exec(str)) !== null) {
           var i = match.index;
           var char = str.charCodeAt(i);
           var next = xmlCodeMap.get(char);
@@ -2383,14 +2383,14 @@ var MarkdownItSanitizeHtml = (function() {
             ret += str.substring(lastIdx, i) + next;
             lastIdx = i + 1;
           } else {
-            ret += "".concat(str.substring(lastIdx, i), "&#x").concat((0, exports.getCodePoint)(str, i).toString(16), ";");
-            lastIdx = exports.xmlReplacer.lastIndex += Number((char & 64512) === 55296);
+            ret += "".concat(str.substring(lastIdx, i), "&#x").concat((0, exports$1.getCodePoint)(str, i).toString(16), ";");
+            lastIdx = exports$1.xmlReplacer.lastIndex += Number((char & 64512) === 55296);
           }
         }
         return ret + str.substr(lastIdx);
       }
-      exports.encodeXML = encodeXML;
-      exports.escape = encodeXML;
+      exports$1.encodeXML = encodeXML;
+      exports$1.escape = encodeXML;
       function getEscaper(regex, map) {
         return function escape(data) {
           var match;
@@ -2406,13 +2406,13 @@ var MarkdownItSanitizeHtml = (function() {
           return result2 + data.substring(lastIdx);
         };
       }
-      exports.escapeUTF8 = getEscaper(/[&<>'"]/g, xmlCodeMap);
-      exports.escapeAttribute = getEscaper(/["&\u00A0]/g, /* @__PURE__ */ new Map([
+      exports$1.escapeUTF8 = getEscaper(/[&<>'"]/g, xmlCodeMap);
+      exports$1.escapeAttribute = getEscaper(/["&\u00A0]/g, /* @__PURE__ */ new Map([
         [34, "&quot;"],
         [38, "&amp;"],
         [160, "&nbsp;"]
       ]));
-      exports.escapeText = getEscaper(/[&<>\u00A0]/g, /* @__PURE__ */ new Map([
+      exports$1.escapeText = getEscaper(/[&<>\u00A0]/g, /* @__PURE__ */ new Map([
         [38, "&amp;"],
         [60, "&lt;"],
         [62, "&gt;"],
@@ -2479,9 +2479,9 @@ var MarkdownItSanitizeHtml = (function() {
   function requireLib$3() {
     if (hasRequiredLib$3) return lib;
     hasRequiredLib$3 = 1;
-    (function(exports) {
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.decodeXMLStrict = exports.decodeHTML5Strict = exports.decodeHTML4Strict = exports.decodeHTML5 = exports.decodeHTML4 = exports.decodeHTMLAttribute = exports.decodeHTMLStrict = exports.decodeHTML = exports.decodeXML = exports.DecodingMode = exports.EntityDecoder = exports.encodeHTML5 = exports.encodeHTML4 = exports.encodeNonAsciiHTML = exports.encodeHTML = exports.escapeText = exports.escapeAttribute = exports.escapeUTF8 = exports.escape = exports.encodeXML = exports.encode = exports.decodeStrict = exports.decode = exports.EncodingMode = exports.EntityLevel = void 0;
+    (function(exports$1) {
+      Object.defineProperty(exports$1, "__esModule", { value: true });
+      exports$1.decodeXMLStrict = exports$1.decodeHTML5Strict = exports$1.decodeHTML4Strict = exports$1.decodeHTML5 = exports$1.decodeHTML4 = exports$1.decodeHTMLAttribute = exports$1.decodeHTMLStrict = exports$1.decodeHTML = exports$1.decodeXML = exports$1.DecodingMode = exports$1.EntityDecoder = exports$1.encodeHTML5 = exports$1.encodeHTML4 = exports$1.encodeNonAsciiHTML = exports$1.encodeHTML = exports$1.escapeText = exports$1.escapeAttribute = exports$1.escapeUTF8 = exports$1.escape = exports$1.encodeXML = exports$1.encode = exports$1.decodeStrict = exports$1.decode = exports$1.EncodingMode = exports$1.EntityLevel = void 0;
       var decode_js_1 = /* @__PURE__ */ requireDecode();
       var encode_js_1 = /* @__PURE__ */ requireEncode();
       var escape_js_1 = /* @__PURE__ */ require_escape();
@@ -2489,7 +2489,7 @@ var MarkdownItSanitizeHtml = (function() {
       (function(EntityLevel2) {
         EntityLevel2[EntityLevel2["XML"] = 0] = "XML";
         EntityLevel2[EntityLevel2["HTML"] = 1] = "HTML";
-      })(EntityLevel = exports.EntityLevel || (exports.EntityLevel = {}));
+      })(EntityLevel = exports$1.EntityLevel || (exports$1.EntityLevel = {}));
       var EncodingMode;
       (function(EncodingMode2) {
         EncodingMode2[EncodingMode2["UTF8"] = 0] = "UTF8";
@@ -2497,7 +2497,7 @@ var MarkdownItSanitizeHtml = (function() {
         EncodingMode2[EncodingMode2["Extensive"] = 2] = "Extensive";
         EncodingMode2[EncodingMode2["Attribute"] = 3] = "Attribute";
         EncodingMode2[EncodingMode2["Text"] = 4] = "Text";
-      })(EncodingMode = exports.EncodingMode || (exports.EncodingMode = {}));
+      })(EncodingMode = exports$1.EncodingMode || (exports$1.EncodingMode = {}));
       function decode2(data, options) {
         if (options === void 0) {
           options = EntityLevel.XML;
@@ -2509,7 +2509,7 @@ var MarkdownItSanitizeHtml = (function() {
         }
         return (0, decode_js_1.decodeXML)(data);
       }
-      exports.decode = decode2;
+      exports$1.decode = decode2;
       function decodeStrict(data, options) {
         var _a;
         if (options === void 0) {
@@ -2519,7 +2519,7 @@ var MarkdownItSanitizeHtml = (function() {
         (_a = opts.mode) !== null && _a !== void 0 ? _a : opts.mode = decode_js_1.DecodingMode.Strict;
         return decode2(data, opts);
       }
-      exports.decodeStrict = decodeStrict;
+      exports$1.decodeStrict = decodeStrict;
       function encode2(data, options) {
         if (options === void 0) {
           options = EntityLevel.XML;
@@ -2539,68 +2539,68 @@ var MarkdownItSanitizeHtml = (function() {
         }
         return (0, escape_js_1.encodeXML)(data);
       }
-      exports.encode = encode2;
+      exports$1.encode = encode2;
       var escape_js_2 = /* @__PURE__ */ require_escape();
-      Object.defineProperty(exports, "encodeXML", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "encodeXML", { enumerable: true, get: function() {
         return escape_js_2.encodeXML;
       } });
-      Object.defineProperty(exports, "escape", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "escape", { enumerable: true, get: function() {
         return escape_js_2.escape;
       } });
-      Object.defineProperty(exports, "escapeUTF8", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "escapeUTF8", { enumerable: true, get: function() {
         return escape_js_2.escapeUTF8;
       } });
-      Object.defineProperty(exports, "escapeAttribute", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "escapeAttribute", { enumerable: true, get: function() {
         return escape_js_2.escapeAttribute;
       } });
-      Object.defineProperty(exports, "escapeText", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "escapeText", { enumerable: true, get: function() {
         return escape_js_2.escapeText;
       } });
       var encode_js_2 = /* @__PURE__ */ requireEncode();
-      Object.defineProperty(exports, "encodeHTML", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "encodeHTML", { enumerable: true, get: function() {
         return encode_js_2.encodeHTML;
       } });
-      Object.defineProperty(exports, "encodeNonAsciiHTML", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "encodeNonAsciiHTML", { enumerable: true, get: function() {
         return encode_js_2.encodeNonAsciiHTML;
       } });
-      Object.defineProperty(exports, "encodeHTML4", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "encodeHTML4", { enumerable: true, get: function() {
         return encode_js_2.encodeHTML;
       } });
-      Object.defineProperty(exports, "encodeHTML5", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "encodeHTML5", { enumerable: true, get: function() {
         return encode_js_2.encodeHTML;
       } });
       var decode_js_2 = /* @__PURE__ */ requireDecode();
-      Object.defineProperty(exports, "EntityDecoder", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "EntityDecoder", { enumerable: true, get: function() {
         return decode_js_2.EntityDecoder;
       } });
-      Object.defineProperty(exports, "DecodingMode", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "DecodingMode", { enumerable: true, get: function() {
         return decode_js_2.DecodingMode;
       } });
-      Object.defineProperty(exports, "decodeXML", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "decodeXML", { enumerable: true, get: function() {
         return decode_js_2.decodeXML;
       } });
-      Object.defineProperty(exports, "decodeHTML", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "decodeHTML", { enumerable: true, get: function() {
         return decode_js_2.decodeHTML;
       } });
-      Object.defineProperty(exports, "decodeHTMLStrict", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "decodeHTMLStrict", { enumerable: true, get: function() {
         return decode_js_2.decodeHTMLStrict;
       } });
-      Object.defineProperty(exports, "decodeHTMLAttribute", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "decodeHTMLAttribute", { enumerable: true, get: function() {
         return decode_js_2.decodeHTMLAttribute;
       } });
-      Object.defineProperty(exports, "decodeHTML4", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "decodeHTML4", { enumerable: true, get: function() {
         return decode_js_2.decodeHTML;
       } });
-      Object.defineProperty(exports, "decodeHTML5", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "decodeHTML5", { enumerable: true, get: function() {
         return decode_js_2.decodeHTML;
       } });
-      Object.defineProperty(exports, "decodeHTML4Strict", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "decodeHTML4Strict", { enumerable: true, get: function() {
         return decode_js_2.decodeHTMLStrict;
       } });
-      Object.defineProperty(exports, "decodeHTML5Strict", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "decodeHTML5Strict", { enumerable: true, get: function() {
         return decode_js_2.decodeHTMLStrict;
       } });
-      Object.defineProperty(exports, "decodeXMLStrict", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "decodeXMLStrict", { enumerable: true, get: function() {
         return decode_js_2.decodeXML;
       } });
     })(lib);
@@ -3593,7 +3593,7 @@ var MarkdownItSanitizeHtml = (function() {
   function requireLib$1() {
     if (hasRequiredLib$1) return lib$2;
     hasRequiredLib$1 = 1;
-    (function(exports) {
+    (function(exports$1) {
       var __createBinding = lib$2 && lib$2.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -3607,35 +3607,35 @@ var MarkdownItSanitizeHtml = (function() {
         if (k2 === void 0) k2 = k;
         o[k2] = m[k];
       }));
-      var __exportStar = lib$2 && lib$2.__exportStar || function(m, exports2) {
-        for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p)) __createBinding(exports2, m, p);
+      var __exportStar = lib$2 && lib$2.__exportStar || function(m, exports$12) {
+        for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports$12, p)) __createBinding(exports$12, m, p);
       };
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.hasChildren = exports.isDocument = exports.isComment = exports.isText = exports.isCDATA = exports.isTag = void 0;
-      __exportStar(/* @__PURE__ */ requireStringify$1(), exports);
-      __exportStar(/* @__PURE__ */ requireTraversal(), exports);
-      __exportStar(/* @__PURE__ */ requireManipulation(), exports);
-      __exportStar(/* @__PURE__ */ requireQuerying(), exports);
-      __exportStar(/* @__PURE__ */ requireLegacy(), exports);
-      __exportStar(/* @__PURE__ */ requireHelpers(), exports);
-      __exportStar(/* @__PURE__ */ requireFeeds(), exports);
+      Object.defineProperty(exports$1, "__esModule", { value: true });
+      exports$1.hasChildren = exports$1.isDocument = exports$1.isComment = exports$1.isText = exports$1.isCDATA = exports$1.isTag = void 0;
+      __exportStar(/* @__PURE__ */ requireStringify$1(), exports$1);
+      __exportStar(/* @__PURE__ */ requireTraversal(), exports$1);
+      __exportStar(/* @__PURE__ */ requireManipulation(), exports$1);
+      __exportStar(/* @__PURE__ */ requireQuerying(), exports$1);
+      __exportStar(/* @__PURE__ */ requireLegacy(), exports$1);
+      __exportStar(/* @__PURE__ */ requireHelpers(), exports$1);
+      __exportStar(/* @__PURE__ */ requireFeeds(), exports$1);
       var domhandler_1 = /* @__PURE__ */ requireLib$4();
-      Object.defineProperty(exports, "isTag", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "isTag", { enumerable: true, get: function() {
         return domhandler_1.isTag;
       } });
-      Object.defineProperty(exports, "isCDATA", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "isCDATA", { enumerable: true, get: function() {
         return domhandler_1.isCDATA;
       } });
-      Object.defineProperty(exports, "isText", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "isText", { enumerable: true, get: function() {
         return domhandler_1.isText;
       } });
-      Object.defineProperty(exports, "isComment", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "isComment", { enumerable: true, get: function() {
         return domhandler_1.isComment;
       } });
-      Object.defineProperty(exports, "isDocument", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "isDocument", { enumerable: true, get: function() {
         return domhandler_1.isDocument;
       } });
-      Object.defineProperty(exports, "hasChildren", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "hasChildren", { enumerable: true, get: function() {
         return domhandler_1.hasChildren;
       } });
     })(lib$2);
@@ -3645,7 +3645,7 @@ var MarkdownItSanitizeHtml = (function() {
   function requireLib() {
     if (hasRequiredLib) return lib$5;
     hasRequiredLib = 1;
-    (function(exports) {
+    (function(exports$1) {
       var __createBinding = lib$5 && lib$5.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -3676,19 +3676,19 @@ var MarkdownItSanitizeHtml = (function() {
       var __importDefault = lib$5 && lib$5.__importDefault || function(mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.DomUtils = exports.parseFeed = exports.getFeed = exports.ElementType = exports.Tokenizer = exports.createDomStream = exports.parseDOM = exports.parseDocument = exports.DefaultHandler = exports.DomHandler = exports.Parser = void 0;
+      Object.defineProperty(exports$1, "__esModule", { value: true });
+      exports$1.DomUtils = exports$1.parseFeed = exports$1.getFeed = exports$1.ElementType = exports$1.Tokenizer = exports$1.createDomStream = exports$1.parseDOM = exports$1.parseDocument = exports$1.DefaultHandler = exports$1.DomHandler = exports$1.Parser = void 0;
       var Parser_js_1 = /* @__PURE__ */ requireParser$1();
       var Parser_js_2 = /* @__PURE__ */ requireParser$1();
-      Object.defineProperty(exports, "Parser", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "Parser", { enumerable: true, get: function() {
         return Parser_js_2.Parser;
       } });
       var domhandler_1 = /* @__PURE__ */ requireLib$4();
       var domhandler_2 = /* @__PURE__ */ requireLib$4();
-      Object.defineProperty(exports, "DomHandler", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "DomHandler", { enumerable: true, get: function() {
         return domhandler_2.DomHandler;
       } });
-      Object.defineProperty(exports, "DefaultHandler", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "DefaultHandler", { enumerable: true, get: function() {
         return domhandler_2.DomHandler;
       } });
       function parseDocument(data, options) {
@@ -3696,24 +3696,24 @@ var MarkdownItSanitizeHtml = (function() {
         new Parser_js_1.Parser(handler, options).end(data);
         return handler.root;
       }
-      exports.parseDocument = parseDocument;
+      exports$1.parseDocument = parseDocument;
       function parseDOM(data, options) {
         return parseDocument(data, options).children;
       }
-      exports.parseDOM = parseDOM;
+      exports$1.parseDOM = parseDOM;
       function createDomStream(callback, options, elementCallback) {
         var handler = new domhandler_1.DomHandler(callback, options, elementCallback);
         return new Parser_js_1.Parser(handler, options);
       }
-      exports.createDomStream = createDomStream;
+      exports$1.createDomStream = createDomStream;
       var Tokenizer_js_1 = /* @__PURE__ */ requireTokenizer();
-      Object.defineProperty(exports, "Tokenizer", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "Tokenizer", { enumerable: true, get: function() {
         return __importDefault(Tokenizer_js_1).default;
       } });
-      exports.ElementType = __importStar(/* @__PURE__ */ requireLib$5());
+      exports$1.ElementType = __importStar(/* @__PURE__ */ requireLib$5());
       var domutils_1 = /* @__PURE__ */ requireLib$1();
       var domutils_2 = /* @__PURE__ */ requireLib$1();
-      Object.defineProperty(exports, "getFeed", { enumerable: true, get: function() {
+      Object.defineProperty(exports$1, "getFeed", { enumerable: true, get: function() {
         return domutils_2.getFeed;
       } });
       var parseFeedDefaultOptions = { xmlMode: true };
@@ -3723,8 +3723,8 @@ var MarkdownItSanitizeHtml = (function() {
         }
         return (0, domutils_1.getFeed)(parseDOM(feed, options));
       }
-      exports.parseFeed = parseFeed;
-      exports.DomUtils = __importStar(/* @__PURE__ */ requireLib$1());
+      exports$1.parseFeed = parseFeed;
+      exports$1.DomUtils = __importStar(/* @__PURE__ */ requireLib$1());
     })(lib$5);
     return lib$5;
   }
@@ -3747,12 +3747,6 @@ var MarkdownItSanitizeHtml = (function() {
     if (hasRequiredIsPlainObject) return isPlainObject;
     hasRequiredIsPlainObject = 1;
     Object.defineProperty(isPlainObject, "__esModule", { value: true });
-    /*!
-     * is-plain-object <https://github.com/jonschlinkert/is-plain-object>
-     *
-     * Copyright (c) 2014-2017, Jon Schlinkert.
-     * Released under the MIT License.
-     */
     function isObject(o) {
       return Object.prototype.toString.call(o) === "[object Object]";
     }

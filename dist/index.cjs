@@ -68,10 +68,10 @@ var hasRequiredDecode_codepoint;
 function requireDecode_codepoint() {
   if (hasRequiredDecode_codepoint) return decode_codepoint;
   hasRequiredDecode_codepoint = 1;
-  (function(exports2) {
+  (function(exports$1) {
     var _a;
-    Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.replaceCodePoint = exports2.fromCodePoint = void 0;
+    Object.defineProperty(exports$1, "__esModule", { value: true });
+    exports$1.replaceCodePoint = exports$1.fromCodePoint = void 0;
     var decodeMap = /* @__PURE__ */ new Map([
       [0, 65533],
       // C1 Unicode control character reference replacements
@@ -103,7 +103,7 @@ function requireDecode_codepoint() {
       [158, 382],
       [159, 376]
     ]);
-    exports2.fromCodePoint = // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, node/no-unsupported-features/es-builtins
+    exports$1.fromCodePoint = // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, node/no-unsupported-features/es-builtins
     (_a = String.fromCodePoint) !== null && _a !== void 0 ? _a : function(codePoint) {
       var output = "";
       if (codePoint > 65535) {
@@ -121,11 +121,11 @@ function requireDecode_codepoint() {
       }
       return (_a2 = decodeMap.get(codePoint)) !== null && _a2 !== void 0 ? _a2 : codePoint;
     }
-    exports2.replaceCodePoint = replaceCodePoint;
+    exports$1.replaceCodePoint = replaceCodePoint;
     function decodeCodePoint(codePoint) {
-      return (0, exports2.fromCodePoint)(replaceCodePoint(codePoint));
+      return (0, exports$1.fromCodePoint)(replaceCodePoint(codePoint));
     }
-    exports2.default = decodeCodePoint;
+    exports$1.default = decodeCodePoint;
   })(decode_codepoint);
   return decode_codepoint;
 }
@@ -133,7 +133,7 @@ var hasRequiredDecode;
 function requireDecode() {
   if (hasRequiredDecode) return decode;
   hasRequiredDecode = 1;
-  (function(exports2) {
+  (function(exports$1) {
     var __createBinding = decode && decode.__createBinding || (Object.create ? (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -164,19 +164,19 @@ function requireDecode() {
     var __importDefault = decode && decode.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
     };
-    Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.decodeXML = exports2.decodeHTMLStrict = exports2.decodeHTMLAttribute = exports2.decodeHTML = exports2.determineBranch = exports2.EntityDecoder = exports2.DecodingMode = exports2.BinTrieFlags = exports2.fromCodePoint = exports2.replaceCodePoint = exports2.decodeCodePoint = exports2.xmlDecodeTree = exports2.htmlDecodeTree = void 0;
+    Object.defineProperty(exports$1, "__esModule", { value: true });
+    exports$1.decodeXML = exports$1.decodeHTMLStrict = exports$1.decodeHTMLAttribute = exports$1.decodeHTML = exports$1.determineBranch = exports$1.EntityDecoder = exports$1.DecodingMode = exports$1.BinTrieFlags = exports$1.fromCodePoint = exports$1.replaceCodePoint = exports$1.decodeCodePoint = exports$1.xmlDecodeTree = exports$1.htmlDecodeTree = void 0;
     var decode_data_html_js_1 = __importDefault(/* @__PURE__ */ requireDecodeDataHtml());
-    exports2.htmlDecodeTree = decode_data_html_js_1.default;
+    exports$1.htmlDecodeTree = decode_data_html_js_1.default;
     var decode_data_xml_js_1 = __importDefault(/* @__PURE__ */ requireDecodeDataXml());
-    exports2.xmlDecodeTree = decode_data_xml_js_1.default;
+    exports$1.xmlDecodeTree = decode_data_xml_js_1.default;
     var decode_codepoint_js_1 = __importStar(/* @__PURE__ */ requireDecode_codepoint());
-    exports2.decodeCodePoint = decode_codepoint_js_1.default;
+    exports$1.decodeCodePoint = decode_codepoint_js_1.default;
     var decode_codepoint_js_2 = /* @__PURE__ */ requireDecode_codepoint();
-    Object.defineProperty(exports2, "replaceCodePoint", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "replaceCodePoint", { enumerable: true, get: function() {
       return decode_codepoint_js_2.replaceCodePoint;
     } });
-    Object.defineProperty(exports2, "fromCodePoint", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "fromCodePoint", { enumerable: true, get: function() {
       return decode_codepoint_js_2.fromCodePoint;
     } });
     var CharCodes;
@@ -200,7 +200,7 @@ function requireDecode() {
       BinTrieFlags2[BinTrieFlags2["VALUE_LENGTH"] = 49152] = "VALUE_LENGTH";
       BinTrieFlags2[BinTrieFlags2["BRANCH_LENGTH"] = 16256] = "BRANCH_LENGTH";
       BinTrieFlags2[BinTrieFlags2["JUMP_TABLE"] = 127] = "JUMP_TABLE";
-    })(BinTrieFlags = exports2.BinTrieFlags || (exports2.BinTrieFlags = {}));
+    })(BinTrieFlags = exports$1.BinTrieFlags || (exports$1.BinTrieFlags = {}));
     function isNumber(code) {
       return code >= CharCodes.ZERO && code <= CharCodes.NINE;
     }
@@ -226,7 +226,7 @@ function requireDecode() {
       DecodingMode2[DecodingMode2["Legacy"] = 0] = "Legacy";
       DecodingMode2[DecodingMode2["Strict"] = 1] = "Strict";
       DecodingMode2[DecodingMode2["Attribute"] = 2] = "Attribute";
-    })(DecodingMode = exports2.DecodingMode || (exports2.DecodingMode = {}));
+    })(DecodingMode = exports$1.DecodingMode || (exports$1.DecodingMode = {}));
     var EntityDecoder = (
       /** @class */
       (function() {
@@ -410,7 +410,7 @@ function requireDecode() {
         return EntityDecoder2;
       })()
     );
-    exports2.EntityDecoder = EntityDecoder;
+    exports$1.EntityDecoder = EntityDecoder;
     function getDecoder(decodeTree) {
       var ret = "";
       var decoder = new EntityDecoder(decodeTree, function(str) {
@@ -464,7 +464,7 @@ function requireDecode() {
       }
       return -1;
     }
-    exports2.determineBranch = determineBranch;
+    exports$1.determineBranch = determineBranch;
     var htmlDecoder = getDecoder(decode_data_html_js_1.default);
     var xmlDecoder = getDecoder(decode_data_xml_js_1.default);
     function decodeHTML(str, mode) {
@@ -473,19 +473,19 @@ function requireDecode() {
       }
       return htmlDecoder(str, mode);
     }
-    exports2.decodeHTML = decodeHTML;
+    exports$1.decodeHTML = decodeHTML;
     function decodeHTMLAttribute(str) {
       return htmlDecoder(str, DecodingMode.Attribute);
     }
-    exports2.decodeHTMLAttribute = decodeHTMLAttribute;
+    exports$1.decodeHTMLAttribute = decodeHTMLAttribute;
     function decodeHTMLStrict(str) {
       return htmlDecoder(str, DecodingMode.Strict);
     }
-    exports2.decodeHTMLStrict = decodeHTMLStrict;
+    exports$1.decodeHTMLStrict = decodeHTMLStrict;
     function decodeXML(str) {
       return xmlDecoder(str, DecodingMode.Strict);
     }
-    exports2.decodeXML = decodeXML;
+    exports$1.decodeXML = decodeXML;
   })(decode);
   return decode;
 }
@@ -493,9 +493,9 @@ var hasRequiredTokenizer;
 function requireTokenizer() {
   if (hasRequiredTokenizer) return Tokenizer;
   hasRequiredTokenizer = 1;
-  (function(exports2) {
-    Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.QuoteType = void 0;
+  (function(exports$1) {
+    Object.defineProperty(exports$1, "__esModule", { value: true });
+    exports$1.QuoteType = void 0;
     var decode_js_1 = /* @__PURE__ */ requireDecode();
     var CharCodes;
     (function(CharCodes2) {
@@ -580,7 +580,7 @@ function requireTokenizer() {
       QuoteType2[QuoteType2["Unquoted"] = 1] = "Unquoted";
       QuoteType2[QuoteType2["Single"] = 2] = "Single";
       QuoteType2[QuoteType2["Double"] = 3] = "Double";
-    })(QuoteType = exports2.QuoteType || (exports2.QuoteType = {}));
+    })(QuoteType = exports$1.QuoteType || (exports$1.QuoteType = {}));
     var Sequences = {
       Cdata: new Uint8Array([67, 68, 65, 84, 65, 91]),
       CdataEnd: new Uint8Array([93, 93, 62]),
@@ -1259,7 +1259,7 @@ function requireTokenizer() {
         return Tokenizer3;
       })()
     );
-    exports2.default = Tokenizer2;
+    exports$1.default = Tokenizer2;
   })(Tokenizer);
   return Tokenizer;
 }
@@ -1700,9 +1700,9 @@ var hasRequiredLib$5;
 function requireLib$5() {
   if (hasRequiredLib$5) return lib$3;
   hasRequiredLib$5 = 1;
-  (function(exports2) {
-    Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.Doctype = exports2.CDATA = exports2.Tag = exports2.Style = exports2.Script = exports2.Comment = exports2.Directive = exports2.Text = exports2.Root = exports2.isTag = exports2.ElementType = void 0;
+  (function(exports$1) {
+    Object.defineProperty(exports$1, "__esModule", { value: true });
+    exports$1.Doctype = exports$1.CDATA = exports$1.Tag = exports$1.Style = exports$1.Script = exports$1.Comment = exports$1.Directive = exports$1.Text = exports$1.Root = exports$1.isTag = exports$1.ElementType = void 0;
     var ElementType;
     (function(ElementType2) {
       ElementType2["Root"] = "root";
@@ -1714,20 +1714,20 @@ function requireLib$5() {
       ElementType2["Tag"] = "tag";
       ElementType2["CDATA"] = "cdata";
       ElementType2["Doctype"] = "doctype";
-    })(ElementType = exports2.ElementType || (exports2.ElementType = {}));
+    })(ElementType = exports$1.ElementType || (exports$1.ElementType = {}));
     function isTag(elem) {
       return elem.type === ElementType.Tag || elem.type === ElementType.Script || elem.type === ElementType.Style;
     }
-    exports2.isTag = isTag;
-    exports2.Root = ElementType.Root;
-    exports2.Text = ElementType.Text;
-    exports2.Directive = ElementType.Directive;
-    exports2.Comment = ElementType.Comment;
-    exports2.Script = ElementType.Script;
-    exports2.Style = ElementType.Style;
-    exports2.Tag = ElementType.Tag;
-    exports2.CDATA = ElementType.CDATA;
-    exports2.Doctype = ElementType.Doctype;
+    exports$1.isTag = isTag;
+    exports$1.Root = ElementType.Root;
+    exports$1.Text = ElementType.Text;
+    exports$1.Directive = ElementType.Directive;
+    exports$1.Comment = ElementType.Comment;
+    exports$1.Script = ElementType.Script;
+    exports$1.Style = ElementType.Style;
+    exports$1.Tag = ElementType.Tag;
+    exports$1.CDATA = ElementType.CDATA;
+    exports$1.Doctype = ElementType.Doctype;
   })(lib$3);
   return lib$3;
 }
@@ -2169,7 +2169,7 @@ var hasRequiredLib$4;
 function requireLib$4() {
   if (hasRequiredLib$4) return lib$4;
   hasRequiredLib$4 = 1;
-  (function(exports2) {
+  (function(exports$1) {
     var __createBinding = lib$4 && lib$4.__createBinding || (Object.create ? (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -2183,14 +2183,14 @@ function requireLib$4() {
       if (k2 === void 0) k2 = k;
       o[k2] = m[k];
     }));
-    var __exportStar = lib$4 && lib$4.__exportStar || function(m, exports3) {
-      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    var __exportStar = lib$4 && lib$4.__exportStar || function(m, exports$12) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports$12, p)) __createBinding(exports$12, m, p);
     };
-    Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.DomHandler = void 0;
+    Object.defineProperty(exports$1, "__esModule", { value: true });
+    exports$1.DomHandler = void 0;
     var domelementtype_1 = /* @__PURE__ */ requireLib$5();
     var node_js_1 = /* @__PURE__ */ requireNode$1();
-    __exportStar(/* @__PURE__ */ requireNode$1(), exports2);
+    __exportStar(/* @__PURE__ */ requireNode$1(), exports$1);
     var defaultOpts = {
       withStartIndices: false,
       withEndIndices: false,
@@ -2320,8 +2320,8 @@ function requireLib$4() {
         return DomHandler2;
       })()
     );
-    exports2.DomHandler = DomHandler;
-    exports2.default = DomHandler;
+    exports$1.DomHandler = DomHandler;
+    exports$1.default = DomHandler;
   })(lib$4);
   return lib$4;
 }
@@ -2350,10 +2350,10 @@ var hasRequired_escape;
 function require_escape() {
   if (hasRequired_escape) return _escape;
   hasRequired_escape = 1;
-  (function(exports2) {
-    Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.escapeText = exports2.escapeAttribute = exports2.escapeUTF8 = exports2.escape = exports2.encodeXML = exports2.getCodePoint = exports2.xmlReplacer = void 0;
-    exports2.xmlReplacer = /["&'<>$\x80-\uFFFF]/g;
+  (function(exports$1) {
+    Object.defineProperty(exports$1, "__esModule", { value: true });
+    exports$1.escapeText = exports$1.escapeAttribute = exports$1.escapeUTF8 = exports$1.escape = exports$1.encodeXML = exports$1.getCodePoint = exports$1.xmlReplacer = void 0;
+    exports$1.xmlReplacer = /["&'<>$\x80-\uFFFF]/g;
     var xmlCodeMap = /* @__PURE__ */ new Map([
       [34, "&quot;"],
       [38, "&amp;"],
@@ -2361,7 +2361,7 @@ function require_escape() {
       [60, "&lt;"],
       [62, "&gt;"]
     ]);
-    exports2.getCodePoint = // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    exports$1.getCodePoint = // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     String.prototype.codePointAt != null ? function(str, index) {
       return str.codePointAt(index);
     } : (
@@ -2374,7 +2374,7 @@ function require_escape() {
       var ret = "";
       var lastIdx = 0;
       var match;
-      while ((match = exports2.xmlReplacer.exec(str)) !== null) {
+      while ((match = exports$1.xmlReplacer.exec(str)) !== null) {
         var i = match.index;
         var char = str.charCodeAt(i);
         var next = xmlCodeMap.get(char);
@@ -2382,14 +2382,14 @@ function require_escape() {
           ret += str.substring(lastIdx, i) + next;
           lastIdx = i + 1;
         } else {
-          ret += "".concat(str.substring(lastIdx, i), "&#x").concat((0, exports2.getCodePoint)(str, i).toString(16), ";");
-          lastIdx = exports2.xmlReplacer.lastIndex += Number((char & 64512) === 55296);
+          ret += "".concat(str.substring(lastIdx, i), "&#x").concat((0, exports$1.getCodePoint)(str, i).toString(16), ";");
+          lastIdx = exports$1.xmlReplacer.lastIndex += Number((char & 64512) === 55296);
         }
       }
       return ret + str.substr(lastIdx);
     }
-    exports2.encodeXML = encodeXML;
-    exports2.escape = encodeXML;
+    exports$1.encodeXML = encodeXML;
+    exports$1.escape = encodeXML;
     function getEscaper(regex, map) {
       return function escape(data) {
         var match;
@@ -2405,13 +2405,13 @@ function require_escape() {
         return result2 + data.substring(lastIdx);
       };
     }
-    exports2.escapeUTF8 = getEscaper(/[&<>'"]/g, xmlCodeMap);
-    exports2.escapeAttribute = getEscaper(/["&\u00A0]/g, /* @__PURE__ */ new Map([
+    exports$1.escapeUTF8 = getEscaper(/[&<>'"]/g, xmlCodeMap);
+    exports$1.escapeAttribute = getEscaper(/["&\u00A0]/g, /* @__PURE__ */ new Map([
       [34, "&quot;"],
       [38, "&amp;"],
       [160, "&nbsp;"]
     ]));
-    exports2.escapeText = getEscaper(/[&<>\u00A0]/g, /* @__PURE__ */ new Map([
+    exports$1.escapeText = getEscaper(/[&<>\u00A0]/g, /* @__PURE__ */ new Map([
       [38, "&amp;"],
       [60, "&lt;"],
       [62, "&gt;"],
@@ -2478,9 +2478,9 @@ var hasRequiredLib$3;
 function requireLib$3() {
   if (hasRequiredLib$3) return lib;
   hasRequiredLib$3 = 1;
-  (function(exports2) {
-    Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.decodeXMLStrict = exports2.decodeHTML5Strict = exports2.decodeHTML4Strict = exports2.decodeHTML5 = exports2.decodeHTML4 = exports2.decodeHTMLAttribute = exports2.decodeHTMLStrict = exports2.decodeHTML = exports2.decodeXML = exports2.DecodingMode = exports2.EntityDecoder = exports2.encodeHTML5 = exports2.encodeHTML4 = exports2.encodeNonAsciiHTML = exports2.encodeHTML = exports2.escapeText = exports2.escapeAttribute = exports2.escapeUTF8 = exports2.escape = exports2.encodeXML = exports2.encode = exports2.decodeStrict = exports2.decode = exports2.EncodingMode = exports2.EntityLevel = void 0;
+  (function(exports$1) {
+    Object.defineProperty(exports$1, "__esModule", { value: true });
+    exports$1.decodeXMLStrict = exports$1.decodeHTML5Strict = exports$1.decodeHTML4Strict = exports$1.decodeHTML5 = exports$1.decodeHTML4 = exports$1.decodeHTMLAttribute = exports$1.decodeHTMLStrict = exports$1.decodeHTML = exports$1.decodeXML = exports$1.DecodingMode = exports$1.EntityDecoder = exports$1.encodeHTML5 = exports$1.encodeHTML4 = exports$1.encodeNonAsciiHTML = exports$1.encodeHTML = exports$1.escapeText = exports$1.escapeAttribute = exports$1.escapeUTF8 = exports$1.escape = exports$1.encodeXML = exports$1.encode = exports$1.decodeStrict = exports$1.decode = exports$1.EncodingMode = exports$1.EntityLevel = void 0;
     var decode_js_1 = /* @__PURE__ */ requireDecode();
     var encode_js_1 = /* @__PURE__ */ requireEncode();
     var escape_js_1 = /* @__PURE__ */ require_escape();
@@ -2488,7 +2488,7 @@ function requireLib$3() {
     (function(EntityLevel2) {
       EntityLevel2[EntityLevel2["XML"] = 0] = "XML";
       EntityLevel2[EntityLevel2["HTML"] = 1] = "HTML";
-    })(EntityLevel = exports2.EntityLevel || (exports2.EntityLevel = {}));
+    })(EntityLevel = exports$1.EntityLevel || (exports$1.EntityLevel = {}));
     var EncodingMode;
     (function(EncodingMode2) {
       EncodingMode2[EncodingMode2["UTF8"] = 0] = "UTF8";
@@ -2496,7 +2496,7 @@ function requireLib$3() {
       EncodingMode2[EncodingMode2["Extensive"] = 2] = "Extensive";
       EncodingMode2[EncodingMode2["Attribute"] = 3] = "Attribute";
       EncodingMode2[EncodingMode2["Text"] = 4] = "Text";
-    })(EncodingMode = exports2.EncodingMode || (exports2.EncodingMode = {}));
+    })(EncodingMode = exports$1.EncodingMode || (exports$1.EncodingMode = {}));
     function decode2(data, options) {
       if (options === void 0) {
         options = EntityLevel.XML;
@@ -2508,7 +2508,7 @@ function requireLib$3() {
       }
       return (0, decode_js_1.decodeXML)(data);
     }
-    exports2.decode = decode2;
+    exports$1.decode = decode2;
     function decodeStrict(data, options) {
       var _a;
       if (options === void 0) {
@@ -2518,7 +2518,7 @@ function requireLib$3() {
       (_a = opts.mode) !== null && _a !== void 0 ? _a : opts.mode = decode_js_1.DecodingMode.Strict;
       return decode2(data, opts);
     }
-    exports2.decodeStrict = decodeStrict;
+    exports$1.decodeStrict = decodeStrict;
     function encode2(data, options) {
       if (options === void 0) {
         options = EntityLevel.XML;
@@ -2538,68 +2538,68 @@ function requireLib$3() {
       }
       return (0, escape_js_1.encodeXML)(data);
     }
-    exports2.encode = encode2;
+    exports$1.encode = encode2;
     var escape_js_2 = /* @__PURE__ */ require_escape();
-    Object.defineProperty(exports2, "encodeXML", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "encodeXML", { enumerable: true, get: function() {
       return escape_js_2.encodeXML;
     } });
-    Object.defineProperty(exports2, "escape", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "escape", { enumerable: true, get: function() {
       return escape_js_2.escape;
     } });
-    Object.defineProperty(exports2, "escapeUTF8", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "escapeUTF8", { enumerable: true, get: function() {
       return escape_js_2.escapeUTF8;
     } });
-    Object.defineProperty(exports2, "escapeAttribute", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "escapeAttribute", { enumerable: true, get: function() {
       return escape_js_2.escapeAttribute;
     } });
-    Object.defineProperty(exports2, "escapeText", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "escapeText", { enumerable: true, get: function() {
       return escape_js_2.escapeText;
     } });
     var encode_js_2 = /* @__PURE__ */ requireEncode();
-    Object.defineProperty(exports2, "encodeHTML", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "encodeHTML", { enumerable: true, get: function() {
       return encode_js_2.encodeHTML;
     } });
-    Object.defineProperty(exports2, "encodeNonAsciiHTML", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "encodeNonAsciiHTML", { enumerable: true, get: function() {
       return encode_js_2.encodeNonAsciiHTML;
     } });
-    Object.defineProperty(exports2, "encodeHTML4", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "encodeHTML4", { enumerable: true, get: function() {
       return encode_js_2.encodeHTML;
     } });
-    Object.defineProperty(exports2, "encodeHTML5", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "encodeHTML5", { enumerable: true, get: function() {
       return encode_js_2.encodeHTML;
     } });
     var decode_js_2 = /* @__PURE__ */ requireDecode();
-    Object.defineProperty(exports2, "EntityDecoder", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "EntityDecoder", { enumerable: true, get: function() {
       return decode_js_2.EntityDecoder;
     } });
-    Object.defineProperty(exports2, "DecodingMode", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "DecodingMode", { enumerable: true, get: function() {
       return decode_js_2.DecodingMode;
     } });
-    Object.defineProperty(exports2, "decodeXML", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "decodeXML", { enumerable: true, get: function() {
       return decode_js_2.decodeXML;
     } });
-    Object.defineProperty(exports2, "decodeHTML", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "decodeHTML", { enumerable: true, get: function() {
       return decode_js_2.decodeHTML;
     } });
-    Object.defineProperty(exports2, "decodeHTMLStrict", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "decodeHTMLStrict", { enumerable: true, get: function() {
       return decode_js_2.decodeHTMLStrict;
     } });
-    Object.defineProperty(exports2, "decodeHTMLAttribute", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "decodeHTMLAttribute", { enumerable: true, get: function() {
       return decode_js_2.decodeHTMLAttribute;
     } });
-    Object.defineProperty(exports2, "decodeHTML4", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "decodeHTML4", { enumerable: true, get: function() {
       return decode_js_2.decodeHTML;
     } });
-    Object.defineProperty(exports2, "decodeHTML5", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "decodeHTML5", { enumerable: true, get: function() {
       return decode_js_2.decodeHTML;
     } });
-    Object.defineProperty(exports2, "decodeHTML4Strict", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "decodeHTML4Strict", { enumerable: true, get: function() {
       return decode_js_2.decodeHTMLStrict;
     } });
-    Object.defineProperty(exports2, "decodeHTML5Strict", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "decodeHTML5Strict", { enumerable: true, get: function() {
       return decode_js_2.decodeHTMLStrict;
     } });
-    Object.defineProperty(exports2, "decodeXMLStrict", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "decodeXMLStrict", { enumerable: true, get: function() {
       return decode_js_2.decodeXML;
     } });
   })(lib);
@@ -3592,7 +3592,7 @@ var hasRequiredLib$1;
 function requireLib$1() {
   if (hasRequiredLib$1) return lib$2;
   hasRequiredLib$1 = 1;
-  (function(exports2) {
+  (function(exports$1) {
     var __createBinding = lib$2 && lib$2.__createBinding || (Object.create ? (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -3606,35 +3606,35 @@ function requireLib$1() {
       if (k2 === void 0) k2 = k;
       o[k2] = m[k];
     }));
-    var __exportStar = lib$2 && lib$2.__exportStar || function(m, exports3) {
-      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    var __exportStar = lib$2 && lib$2.__exportStar || function(m, exports$12) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports$12, p)) __createBinding(exports$12, m, p);
     };
-    Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.hasChildren = exports2.isDocument = exports2.isComment = exports2.isText = exports2.isCDATA = exports2.isTag = void 0;
-    __exportStar(/* @__PURE__ */ requireStringify$1(), exports2);
-    __exportStar(/* @__PURE__ */ requireTraversal(), exports2);
-    __exportStar(/* @__PURE__ */ requireManipulation(), exports2);
-    __exportStar(/* @__PURE__ */ requireQuerying(), exports2);
-    __exportStar(/* @__PURE__ */ requireLegacy(), exports2);
-    __exportStar(/* @__PURE__ */ requireHelpers(), exports2);
-    __exportStar(/* @__PURE__ */ requireFeeds(), exports2);
+    Object.defineProperty(exports$1, "__esModule", { value: true });
+    exports$1.hasChildren = exports$1.isDocument = exports$1.isComment = exports$1.isText = exports$1.isCDATA = exports$1.isTag = void 0;
+    __exportStar(/* @__PURE__ */ requireStringify$1(), exports$1);
+    __exportStar(/* @__PURE__ */ requireTraversal(), exports$1);
+    __exportStar(/* @__PURE__ */ requireManipulation(), exports$1);
+    __exportStar(/* @__PURE__ */ requireQuerying(), exports$1);
+    __exportStar(/* @__PURE__ */ requireLegacy(), exports$1);
+    __exportStar(/* @__PURE__ */ requireHelpers(), exports$1);
+    __exportStar(/* @__PURE__ */ requireFeeds(), exports$1);
     var domhandler_1 = /* @__PURE__ */ requireLib$4();
-    Object.defineProperty(exports2, "isTag", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "isTag", { enumerable: true, get: function() {
       return domhandler_1.isTag;
     } });
-    Object.defineProperty(exports2, "isCDATA", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "isCDATA", { enumerable: true, get: function() {
       return domhandler_1.isCDATA;
     } });
-    Object.defineProperty(exports2, "isText", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "isText", { enumerable: true, get: function() {
       return domhandler_1.isText;
     } });
-    Object.defineProperty(exports2, "isComment", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "isComment", { enumerable: true, get: function() {
       return domhandler_1.isComment;
     } });
-    Object.defineProperty(exports2, "isDocument", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "isDocument", { enumerable: true, get: function() {
       return domhandler_1.isDocument;
     } });
-    Object.defineProperty(exports2, "hasChildren", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "hasChildren", { enumerable: true, get: function() {
       return domhandler_1.hasChildren;
     } });
   })(lib$2);
@@ -3644,7 +3644,7 @@ var hasRequiredLib;
 function requireLib() {
   if (hasRequiredLib) return lib$5;
   hasRequiredLib = 1;
-  (function(exports2) {
+  (function(exports$1) {
     var __createBinding = lib$5 && lib$5.__createBinding || (Object.create ? (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -3675,19 +3675,19 @@ function requireLib() {
     var __importDefault = lib$5 && lib$5.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
     };
-    Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.DomUtils = exports2.parseFeed = exports2.getFeed = exports2.ElementType = exports2.Tokenizer = exports2.createDomStream = exports2.parseDOM = exports2.parseDocument = exports2.DefaultHandler = exports2.DomHandler = exports2.Parser = void 0;
+    Object.defineProperty(exports$1, "__esModule", { value: true });
+    exports$1.DomUtils = exports$1.parseFeed = exports$1.getFeed = exports$1.ElementType = exports$1.Tokenizer = exports$1.createDomStream = exports$1.parseDOM = exports$1.parseDocument = exports$1.DefaultHandler = exports$1.DomHandler = exports$1.Parser = void 0;
     var Parser_js_1 = /* @__PURE__ */ requireParser$1();
     var Parser_js_2 = /* @__PURE__ */ requireParser$1();
-    Object.defineProperty(exports2, "Parser", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "Parser", { enumerable: true, get: function() {
       return Parser_js_2.Parser;
     } });
     var domhandler_1 = /* @__PURE__ */ requireLib$4();
     var domhandler_2 = /* @__PURE__ */ requireLib$4();
-    Object.defineProperty(exports2, "DomHandler", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "DomHandler", { enumerable: true, get: function() {
       return domhandler_2.DomHandler;
     } });
-    Object.defineProperty(exports2, "DefaultHandler", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "DefaultHandler", { enumerable: true, get: function() {
       return domhandler_2.DomHandler;
     } });
     function parseDocument(data, options) {
@@ -3695,24 +3695,24 @@ function requireLib() {
       new Parser_js_1.Parser(handler, options).end(data);
       return handler.root;
     }
-    exports2.parseDocument = parseDocument;
+    exports$1.parseDocument = parseDocument;
     function parseDOM(data, options) {
       return parseDocument(data, options).children;
     }
-    exports2.parseDOM = parseDOM;
+    exports$1.parseDOM = parseDOM;
     function createDomStream(callback, options, elementCallback) {
       var handler = new domhandler_1.DomHandler(callback, options, elementCallback);
       return new Parser_js_1.Parser(handler, options);
     }
-    exports2.createDomStream = createDomStream;
+    exports$1.createDomStream = createDomStream;
     var Tokenizer_js_1 = /* @__PURE__ */ requireTokenizer();
-    Object.defineProperty(exports2, "Tokenizer", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "Tokenizer", { enumerable: true, get: function() {
       return __importDefault(Tokenizer_js_1).default;
     } });
-    exports2.ElementType = __importStar(/* @__PURE__ */ requireLib$5());
+    exports$1.ElementType = __importStar(/* @__PURE__ */ requireLib$5());
     var domutils_1 = /* @__PURE__ */ requireLib$1();
     var domutils_2 = /* @__PURE__ */ requireLib$1();
-    Object.defineProperty(exports2, "getFeed", { enumerable: true, get: function() {
+    Object.defineProperty(exports$1, "getFeed", { enumerable: true, get: function() {
       return domutils_2.getFeed;
     } });
     var parseFeedDefaultOptions = { xmlMode: true };
@@ -3722,8 +3722,8 @@ function requireLib() {
       }
       return (0, domutils_1.getFeed)(parseDOM(feed, options));
     }
-    exports2.parseFeed = parseFeed;
-    exports2.DomUtils = __importStar(/* @__PURE__ */ requireLib$1());
+    exports$1.parseFeed = parseFeed;
+    exports$1.DomUtils = __importStar(/* @__PURE__ */ requireLib$1());
   })(lib$5);
   return lib$5;
 }
@@ -3746,12 +3746,6 @@ function requireIsPlainObject() {
   if (hasRequiredIsPlainObject) return isPlainObject;
   hasRequiredIsPlainObject = 1;
   Object.defineProperty(isPlainObject, "__esModule", { value: true });
-  /*!
-   * is-plain-object <https://github.com/jonschlinkert/is-plain-object>
-   *
-   * Copyright (c) 2014-2017, Jon Schlinkert.
-   * Released under the MIT License.
-   */
   function isObject(o) {
     return Object.prototype.toString.call(o) === "[object Object]";
   }
