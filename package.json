@@ -57,7 +57,7 @@
     "@types/node": "^24.10.3",
     "@types/sanitize-html": "^2.16.0",
     "@vitest/ui": "^3.2.4",
-    "jsdom": "^27.3.0",
+    "jsdom": "^28.0.0",
     "markdown-it": "^14.1.0",
     "markdown-it-task-checkbox": "1.0.6",
     "typescript": "^5.9.3",
